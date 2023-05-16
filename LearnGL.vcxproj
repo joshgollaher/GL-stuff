@@ -151,27 +151,32 @@
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fragment.glsl">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    <None Include="shaders\textured.frag">
+      <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="vertex.glsl">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    <None Include="shaders\textured.vert">
+      <DeploymentContent>true</DeploymentContent>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="container.jpg">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="cube.obj">
+    <Content Include="models\cube.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="monkey.obj" />
-    <Content Include="sphere.obj">
+    <Content Include="models\monkey.obj" />
+    <Content Include="models\sphere.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="models\uvsphere.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\lighting.frag" />
+    <Content Include="shaders\lighting.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\container.jpg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,11 +13,16 @@
 #include "stb_image.h"
 #include "Texture.h"
 
+//If Rider copied content correctly, I wouldn't need absolute paths...
+const char* MODEL_NAME = "C:/Users/joshu/source/repos/LearnGL/LearnGL/models/cube.obj";
+const char* VERTEX_SHADER_NAME = "C:/Users/joshu/source/repos/LearnGL/LearnGL/shaders/textured.vert";
+const char* FRAGMENT_SHADER_NAME = "C:/Users/joshu/source/repos/LearnGL/LearnGL/shaders/textured.frag";
+const char* TEXTURE_NAME = "C:/Users/joshu/source/repos/LearnGL/LearnGL/textures/container.jpg";
 
 int main()
 {
 	objl::Loader loader;
-	if(!loader.LoadFile("sphere.obj"))
+	if(!loader.LoadFile(MODEL_NAME))
 	{
 		std::cerr << "Couldn't load model" << std::endl;
 	}
@@ -44,7 +49,7 @@ int main()
 
 	glViewport(0, 0, window.getSize().x, window.getSize().y);
 
-	Shader shader{ "fragment.glsl", "vertex.glsl" };
+	Shader shader{ FRAGMENT_SHADER_NAME, VERTEX_SHADER_NAME };
 
 	
 	//position, color, tex coord
@@ -67,7 +72,7 @@ int main()
 
 	Model model(shader, vertexData, loader.LoadedIndices);
 	
-	Texture texture("container.jpg");
+	Texture texture(TEXTURE_NAME);
 	
 	Camera camera;
 	camera.setPosition(glm::vec3(0, 0, -3.0f));
@@ -130,7 +135,7 @@ int main()
 			camera.rotate(glm::vec3(0, 60 * dt, 0));
 		}
 		
-		glClearColor(0, 0, 0, 1);
+		glClearColor(0, 0, 0.06f, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		texture.bind();
